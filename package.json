@@ -1,0 +1,27 @@
+{
+   "name": "dom-parser",
+   "version": "1.0.0",
+   "description": "Extracts the main structure of a webpage into clean JSON, capturing metadata, key content and interactive elements for automation.",
+   "main": "src/index.ts",
+   "type": "module",
+   "scripts": {
+      "dev": "node --experimental-strip-types src/index.ts",
+      "build": "tsc"
+   },
+   "keywords": [
+      "dom",
+      "parser",
+      "web scraping",
+      "json"
+   ],
+   "author": "sebasxs",
+   "license": "MIT",
+   "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0",
+   "dependencies": {
+      "playwright": "^1.50.1"
+   },
+   "devDependencies": {
+      "@types/node": "^22.13.1",
+      "typescript": "^5.7.3"
+   }
+}
