@@ -1,7 +1,8 @@
 export interface SimplifiedNode {
    tag: string;
    text?: string;
-   // children?: SimplifiedNode[];
+   children?: SimplifiedNode[];
+   src?: string;
 }
 
 export interface MetaData {

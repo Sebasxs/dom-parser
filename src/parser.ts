@@ -2,7 +2,7 @@
 import { chromium } from 'playwright';
 
 // @types
-import type { DOMData, MetaData, SimplifiedNode } from './types.d';
+import type { DOMData, MetaData, SimplifiedNode } from './types';
 
 export async function extractDOMData(url: string): Promise<DOMData> {
    const browser = await chromium.launch();
@@ -25,18 +25,40 @@ function extractPageData(): DOMData {
       return metaData;
    }
 
-   function traverseBody(body: HTMLElement): SimplifiedNode[] {
+   const PRESERVED_TAGS = new Set([
+      'H1',
+      'H2',
+      'H3',
+      'H4',
+      'H5',
+      'H6',
+      'P',
+      'A',
+      'UL',
+      'OL',
+      'LI',
+      'IMG',
+   ]);
+
+   function traverseChildNodes(node: Node): SimplifiedNode[] {
       const children: SimplifiedNode[] = [];
-      body.childNodes.forEach(childNode => {
+      node.childNodes.forEach(childNode => {
          if (childNode.nodeType === Node.ELEMENT_NODE) {
-            const element = childNode as HTMLElement;
+            const element = childNode as Element;
             const tagName = element.tagName.toLowerCase();
             if (tagName === 'script' || tagName === 'style') return;
-            const textContent = trimAndNormalize(element.textContent || '');
+            if (!PRESERVED_TAGS.has(tagName.toUpperCase())) return;
+
             const child: SimplifiedNode = {
                tag: tagName,
-               text: textContent || undefined,
+               children: traverseChildNodes(element),
             };
+
+            if (tagName === 'img') {
+               const src = element.getAttribute('src');
+               if (src) child.src = src;
+            }
+
             children.push(child);
          } else if (childNode.nodeType === Node.TEXT_NODE) {
             const textContent = trimAndNormalize(childNode.textContent || '');
@@ -50,7 +72,7 @@ function extractPageData(): DOMData {
 
    return {
       metadata: extractMetaData(),
-      body: traverseBody(document.body),
+      body: traverseChildNodes(document.body),
       interactive: [],
    };
 }
