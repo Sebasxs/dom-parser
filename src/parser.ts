@@ -22,6 +22,15 @@ function extractPageData(): DOMData {
       const metaData: MetaData = {};
       const documentTitle = trimAndNormalize(document.title);
       if (documentTitle) metaData.title = documentTitle;
+
+      const descriptionElm = document.querySelector('meta[name="description"]') as HTMLMetaElement;
+      const description = trimAndNormalize(descriptionElm?.content || '');
+      if (description) metaData.description = description;
+
+      const authorElm = document.querySelector('meta[name="author"]') as HTMLMetaElement;
+      const author = trimAndNormalize(authorElm?.content || '');
+      if (author) metaData.author = author;
+
       return metaData;
    }
 
@@ -57,6 +66,13 @@ function extractPageData(): DOMData {
             if (tagName === 'img') {
                const src = element.getAttribute('src');
                if (src) child.src = src;
+               const alt = element.getAttribute('alt');
+               if (alt) child.alt = alt;
+            }
+
+            if (tagName === 'a') {
+               const href = element.getAttribute('href');
+               if (href) child.href = href;
             }
 
             children.push(child);
