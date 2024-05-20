@@ -2,7 +2,7 @@
 import { chromium } from 'playwright';
 
 // @types
-import type { DOMData, MetaData, SimplifiedNode } from './types';
+import type { DOMData, InteractiveElement, MetaData, SimplifiedNode } from './types';
 
 export async function extractDOMData(url: string): Promise<DOMData> {
    const browser = await chromium.launch();
@@ -49,6 +49,9 @@ function extractPageData(): DOMData {
       'IMG',
    ]);
 
+   const INTERACTIVE_TAGS = new Set(['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA']);
+   const interactiveElements: InteractiveElement[] = [];
+
    function traverseChildNodes(node: Node): SimplifiedNode[] {
       const children: SimplifiedNode[] = [];
       node.childNodes.forEach(childNode => {
@@ -56,6 +59,21 @@ function extractPageData(): DOMData {
             const element = childNode as Element;
             const tagName = element.tagName.toLowerCase();
             if (tagName === 'script' || tagName === 'style') return;
+
+            if (INTERACTIVE_TAGS.has(tagName.toUpperCase())) {
+               const interactiveObject: InteractiveElement = { tag: tagName };
+               const attributesToExtract = ['id', 'name', 'class', 'aria-label'];
+               attributesToExtract.forEach(attr => {
+                  if (element.hasAttribute(attr)) {
+                     interactiveObject[attr] = element.getAttribute(attr) || undefined;
+                  }
+               });
+               const text = trimAndNormalize(element.textContent || '');
+               if (text) interactiveObject.text = text;
+               interactiveElements.push(interactiveObject);
+               return;
+            }
+
             if (!PRESERVED_TAGS.has(tagName.toUpperCase())) return;
 
             const child: SimplifiedNode = {
@@ -89,6 +107,6 @@ function extractPageData(): DOMData {
    return {
       metadata: extractMetaData(),
       body: traverseChildNodes(document.body),
-      interactive: [],
+      interactive: interactiveElements,
    };
 }

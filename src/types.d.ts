@@ -1,3 +1,13 @@
+export interface InteractiveElement {
+   tag: string;
+   id?: string;
+   name?: string;
+   class?: string;
+   'aria-label'?: string;
+   text?: string;
+   [key: string]: string | undefined;
+}
+
 export interface SimplifiedNode {
    tag: string;
    text?: string;
@@ -16,5 +26,5 @@ export interface MetaData {
 export interface DOMData {
    metadata: MetaData;
    body: SimplifiedNode[];
-   interactive: [];
+   interactive: InteractiveElement[];
 }
