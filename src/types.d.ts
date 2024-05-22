@@ -4,7 +4,12 @@ export interface InteractiveElement {
    name?: string;
    class?: string;
    'aria-label'?: string;
+   placeholder?: string;
+   value?: string;
+   type?: string;
+   role?: string;
    text?: string;
+   href?: string;
    [key: string]: string | undefined;
 }
 

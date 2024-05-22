@@ -5,7 +5,7 @@ import { chromium } from 'playwright';
 import type { DOMData, InteractiveElement, MetaData, SimplifiedNode } from './types';
 
 export async function extractDOMData(url: string): Promise<DOMData> {
-   const browser = await chromium.launch();
+   const browser = await chromium.launch({ headless: true });
    const page = await browser.newPage();
    await page.goto(url);
    const domResult = await page.evaluate(extractPageData);
@@ -16,6 +16,11 @@ export async function extractDOMData(url: string): Promise<DOMData> {
 function extractPageData(): DOMData {
    function trimAndNormalize(text: string): string {
       return text.replace(/\s+/g, ' ').trim();
+   }
+
+   function isElementVisible(element: Element): boolean {
+      const style = window.getComputedStyle(element);
+      return style.display !== 'none' && style.visibility !== 'hidden';
    }
 
    function extractMetaData(): MetaData {
@@ -49,7 +54,7 @@ function extractPageData(): DOMData {
       'IMG',
    ]);
 
-   const INTERACTIVE_TAGS = new Set(['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA']);
+   const INTERACTIVE_TAGS = new Set(['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA', 'A']);
    const interactiveElements: InteractiveElement[] = [];
 
    function traverseChildNodes(node: Node): SimplifiedNode[] {
@@ -59,10 +64,20 @@ function extractPageData(): DOMData {
             const element = childNode as Element;
             const tagName = element.tagName.toLowerCase();
             if (tagName === 'script' || tagName === 'style') return;
+            if (!isElementVisible(element)) return;
 
             if (INTERACTIVE_TAGS.has(tagName.toUpperCase())) {
                const interactiveObject: InteractiveElement = { tag: tagName };
-               const attributesToExtract = ['id', 'name', 'class', 'aria-label'];
+               const attributesToExtract = [
+                  'id',
+                  'name',
+                  'class',
+                  'aria-label',
+                  'placeholder',
+                  'value',
+                  'type',
+                  'role',
+               ];
                attributesToExtract.forEach(attr => {
                   if (element.hasAttribute(attr)) {
                      interactiveObject[attr] = element.getAttribute(attr) || undefined;
@@ -70,6 +85,12 @@ function extractPageData(): DOMData {
                });
                const text = trimAndNormalize(element.textContent || '');
                if (text) interactiveObject.text = text;
+
+               if (tagName === 'a') {
+                  const href = element.getAttribute('href');
+                  if (href) interactiveObject.href = href;
+               }
+
                interactiveElements.push(interactiveObject);
                return;
             }
