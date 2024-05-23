@@ -36,6 +36,11 @@ function extractPageData(): DOMData {
       const author = trimAndNormalize(authorElm?.content || '');
       if (author) metaData.author = author;
 
+      // Extraer URL Canónica
+      const canonicalElm = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+      const canonical = canonicalElm?.href || '';
+      if (canonical) metaData.canonical = canonical;
+
       return metaData;
    }
 
@@ -52,6 +57,7 @@ function extractPageData(): DOMData {
       'OL',
       'LI',
       'IMG',
+      'TABLE',
    ]);
 
    const INTERACTIVE_TAGS = new Set(['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA', 'A']);
@@ -114,6 +120,10 @@ function extractPageData(): DOMData {
                if (href) child.href = href;
             }
 
+            if (tagName === 'table') {
+               return extractTableData(element);
+            }
+
             children.push(child);
          } else if (childNode.nodeType === Node.TEXT_NODE) {
             const textContent = trimAndNormalize(childNode.textContent || '');
@@ -123,6 +133,87 @@ function extractPageData(): DOMData {
          }
       });
       return children;
+   }
+
+   function extractTableData(tableElement: Element): SimplifiedNode {
+      const tableData: SimplifiedNode = { tag: 'table', header: [], rows: [] };
+
+      const headerCells = tableElement.querySelectorAll('th');
+      if (headerCells.length > 0) {
+         const headerRow: SimplifiedNode[] = [];
+         headerCells.forEach(cell => {
+            const processedCell = processDOMNode(cell);
+            if (processedCell) headerRow.push(processedCell as SimplifiedNode);
+         });
+         tableData.header = headerRow;
+      }
+
+      const dataRows = tableElement.querySelectorAll('tr');
+      if (dataRows.length > 0) {
+         const tableRows: SimplifiedNode[][] = [];
+         dataRows.forEach(row => {
+            const cells = row.querySelectorAll('td');
+            if (cells.length > 0) {
+               const rowData: SimplifiedNode[] = [];
+               cells.forEach(cell => {
+                  const processedCell = processDOMNode(cell);
+                  if (processedCell) rowData.push(processedCell as SimplifiedNode);
+               });
+               tableRows.push(rowData);
+            }
+         });
+         tableData.rows = tableRows;
+      }
+
+      return tableData;
+   }
+
+   function processDOMNode(node: Node): SimplifiedNode | SimplifiedNode[] | null {
+      if (node.nodeType === Node.TEXT_NODE) {
+         const textContent = trimAndNormalize(node.textContent || '');
+         if (!textContent) return null;
+         return { tag: 'span', text: textContent };
+      }
+
+      if (node.nodeType !== Node.ELEMENT_NODE) return null;
+
+      const element = node as Element;
+      const tagName = element.tagName.toLowerCase();
+      if (tagName === 'script' || tagName === 'style') return null;
+      if (!isElementVisible(element)) return null;
+
+      if (INTERACTIVE_TAGS.has(tagName.toUpperCase())) {
+         return null;
+      }
+
+      if (!PRESERVED_TAGS.has(tagName.toUpperCase())) {
+         const childNodes = traverseChildNodes(node);
+         return childNodes.length ? childNodes : null;
+      }
+
+      const elementObject: SimplifiedNode = { tag: tagName };
+
+      if (tagName === 'img') {
+         const src = element.getAttribute('src');
+         if (src) elementObject.src = src;
+         const alt = element.getAttribute('alt');
+         if (alt) elementObject.alt = alt;
+      }
+
+      if (tagName === 'a') {
+         const href = element.getAttribute('href');
+         if (href) elementObject.href = href;
+      }
+
+      if (tagName === 'table') {
+         return extractTableData(element);
+      }
+
+      const children = traverseChildNodes(node);
+      if (children.length) {
+         elementObject.children = children;
+      }
+      return elementObject;
    }
 
    return {

@@ -20,12 +20,15 @@ export interface SimplifiedNode {
    href?: string;
    src?: string;
    alt?: string;
+   header?: SimplifiedNode[];
+   rows?: SimplifiedNode[][];
 }
 
 export interface MetaData {
    title?: string;
    description?: string;
    author?: string;
+   canonical?: string;
 }
 
 export interface DOMData {
