@@ -2,12 +2,14 @@ export interface InteractiveElement {
    tag: string;
    id?: string;
    name?: string;
+   'data-testid'?: string;
    class?: string;
+   title?: string;
    'aria-label'?: string;
+   'data-network'?: string;
+   tabindex?: string;
    placeholder?: string;
    value?: string;
-   type?: string;
-   role?: string;
    text?: string;
    href?: string;
    [key: string]: string | undefined;
@@ -20,8 +22,9 @@ export interface SimplifiedNode {
    href?: string;
    src?: string;
    alt?: string;
+   poster?: string;
    header?: SimplifiedNode[];
-   rows?: SimplifiedNode[][];
+   rows?: SimplifiedNode[];
 }
 
 export interface MetaData {
@@ -29,6 +32,7 @@ export interface MetaData {
    description?: string;
    author?: string;
    canonical?: string;
+   ogImage?: string;
 }
 
 export interface DOMData {
