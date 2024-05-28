@@ -23,35 +23,7 @@ function extractPageData(): DOMData {
       return style.display !== 'none' && style.visibility !== 'hidden';
    }
 
-   function extractMetaData(): MetaData {
-      const metaData: MetaData = {};
-
-      const ogTitleElm = document.querySelector('meta[property="og:title"]') as HTMLMetaElement;
-      const ogTitle = trimAndNormalize(ogTitleElm?.content || '');
-      const documentTitle = trimAndNormalize(document.title);
-      if (ogTitle || documentTitle) metaData.title = ogTitle || documentTitle;
-
-      const ogDescriptionElm = document.querySelector('meta[property="og:description"]') as any;
-      const ogDescription = trimAndNormalize(ogDescriptionElm?.content || '');
-      const descriptionElm = document.querySelector('meta[name="description"]') as HTMLMetaElement;
-      const description = trimAndNormalize(descriptionElm?.content || '');
-      if (ogDescription || description) metaData.description = ogDescription || description;
-
-      const authorElm = document.querySelector('meta[name="author"]') as HTMLMetaElement;
-      const author = trimAndNormalize(authorElm?.content || '');
-      if (author) metaData.author = author;
-
-      const canonicalElm = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-      const canonical = canonicalElm?.href.trim() || '';
-      if (canonical) metaData.canonical = canonical;
-
-      const ogImageElm = document.querySelector('meta[property="og:image"]') as HTMLMetaElement;
-      const ogImage = trimAndNormalize(ogImageElm?.content || '');
-      if (ogImage) metaData.ogImage = ogImage;
-
-      return metaData;
-   }
-
+   const INTERACTIVE_TAGS = new Set(['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA']);
    const PRESERVED_TAGS = new Set([
       'H1',
       'H2',
@@ -59,13 +31,13 @@ function extractPageData(): DOMData {
       'H4',
       'H5',
       'H6',
-      'P',
-      'A',
       'UL',
       'OL',
       'LI',
-      'IMG',
+      'P',
+      'A',
       'TABLE',
+      'IMG',
       'VIDEO',
       'IFRAME',
       'CODE',
@@ -74,93 +46,108 @@ function extractPageData(): DOMData {
       'SECTION',
    ]);
 
-   const INTERACTIVE_TAGS = new Set(['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA']);
    const interactiveElements: InteractiveElement[] = [];
 
    function traverseChildNodes(node: Node): SimplifiedNode[] {
       const children: SimplifiedNode[] = [];
-      node.childNodes.forEach(childNode => {
-         if (childNode.nodeType === Node.ELEMENT_NODE) {
-            const element = childNode as Element;
-            const tagName = element.tagName.toLowerCase();
-            if (tagName === 'script' || tagName === 'style') return;
-            if (!isElementVisible(element)) return;
-
-            if (
-               INTERACTIVE_TAGS.has(tagName.toUpperCase()) ||
-               (tagName === 'a' &&
-                  element.hasAttribute('role') &&
-                  element.getAttribute('role')?.toLowerCase() === 'button')
-            ) {
-               const interactiveObject: InteractiveElement = { tag: tagName };
-               const attributesToExtract = [
-                  'id',
-                  'name',
-                  'data-testid',
-                  'class',
-                  'title',
-                  'aria-label',
-                  'data-network',
-                  'tabindex',
-                  'placeholder',
-                  'value',
-                  'type',
-                  'role',
-               ];
-               attributesToExtract.forEach(attr => {
-                  if (element.hasAttribute(attr)) {
-                     interactiveObject[attr] = element.getAttribute(attr) || undefined;
-                  }
-               });
-               const text = trimAndNormalize(element.textContent || '');
-               if (text) interactiveObject.text = text;
-
-               if (tagName === 'a') {
-                  const href = element.getAttribute('href');
-                  if (href) interactiveObject.href = new URL(href, document.baseURI).href;
-               }
-
-               interactiveElements.push(interactiveObject);
-               return;
-            }
-
-            if (!PRESERVED_TAGS.has(tagName.toUpperCase())) return;
-
-            const child: SimplifiedNode = {
-               tag: tagName,
-               children: traverseChildNodes(element),
-            };
-
-            if (tagName === 'img') {
-               const src = element.getAttribute('src');
-               if (src) child.src = new URL(src, document.baseURI).href;
-               const alt = element.getAttribute('alt');
-               if (alt) child.alt = trimAndNormalize(alt);
-            }
-
-            if (tagName === 'a') {
-               const href = element.getAttribute('href');
-               if (href) child.href = new URL(href, document.baseURI).href;
-            }
-
-            if (tagName === 'video') {
-               const poster = element.getAttribute('poster');
-               if (poster) child.poster = new URL(poster, document.baseURI).href;
-            }
-
-            if (tagName === 'table') {
-               return extractTableData(element);
-            }
-
-            children.push(child);
-         } else if (childNode.nodeType === Node.TEXT_NODE) {
-            const textContent = trimAndNormalize(childNode.textContent || '');
-            if (textContent) {
-               children.push({ tag: 'span', text: textContent });
-            }
+      node.childNodes.forEach(child => {
+         const processedChild = processDOMNode(child);
+         if (processedChild === null) return;
+         if (Array.isArray(processedChild)) {
+            children.push(...processedChild);
+         } else {
+            children.push(processedChild);
          }
       });
+
       return children;
+   }
+
+   function processDOMNode(node: Node): SimplifiedNode | SimplifiedNode[] | null {
+      if (node.nodeType === Node.TEXT_NODE) {
+         const textContent = trimAndNormalize(node.textContent || '');
+         if (!textContent) return null;
+         return { tag: 'span', text: textContent };
+      }
+
+      if (node.nodeType !== Node.ELEMENT_NODE) return null;
+
+      const element = node as Element;
+      const tagName = element.tagName.toUpperCase();
+      if (tagName === 'SCRIPT' || tagName === 'STYLE') return null;
+      if (!isElementVisible(element)) return null;
+
+      const hasRoleAttr = element.hasAttribute('role');
+      const hasButtonRole = hasRoleAttr && element.getAttribute('role')?.toLowerCase() === 'button';
+      const isInteractive = INTERACTIVE_TAGS.has(tagName) || hasButtonRole;
+
+      if (isInteractive) {
+         const interactiveObject: InteractiveElement = { tag: tagName.toLowerCase() };
+         const attributesToExtract = [
+            'id',
+            'name',
+            'data-testid',
+            'class',
+            'title',
+            'aria-label',
+            'data-network',
+            'tabindex',
+            'placeholder',
+            'value',
+         ];
+
+         attributesToExtract.forEach(attr => {
+            if (!element.hasAttribute(attr)) return;
+            interactiveObject[attr] = element.getAttribute(attr) || undefined;
+         });
+
+         const text = trimAndNormalize(element.textContent || '');
+         if (text) interactiveObject.text = text;
+
+         const href = element.getAttribute('href');
+         if (tagName === 'A' && href) {
+            interactiveObject.href = new URL(href, document.baseURI).href;
+         }
+
+         interactiveElements.push(interactiveObject);
+         return null;
+      }
+
+      if (!PRESERVED_TAGS.has(tagName)) {
+         const childNodes = traverseChildNodes(node);
+         return childNodes.length ? childNodes : null;
+      }
+
+      const elementObject: SimplifiedNode = { tag: tagName.toLowerCase() };
+
+      if (tagName === 'TABLE') return extractTableData(element);
+
+      const href = element.getAttribute('href');
+      if (tagName === 'A' && href) {
+         elementObject.href = new URL(href, document.baseURI).href;
+      }
+
+      const src = element.getAttribute('src');
+      if (src) {
+         elementObject.src = new URL(src, document.baseURI).href;
+      }
+
+      if (tagName === 'IMG') {
+         const altText = element.getAttribute('alt');
+         if (altText) elementObject.alt = trimAndNormalize(altText);
+         return elementObject;
+      }
+
+      const poster = element.getAttribute('poster');
+      if (tagName === 'VIDEO' && poster) {
+         elementObject.poster = new URL(poster, document.baseURI).href;
+      }
+
+      const children = traverseChildNodes(node);
+      if (children.length) {
+         elementObject.children = children;
+      }
+      return elementObject;
    }
 
    function extractTableData(tableElement: Element): SimplifiedNode {
@@ -183,68 +170,40 @@ function extractPageData(): DOMData {
       const rows = Array.from(tbody.querySelectorAll('tr'));
       const dataRows = tableData.header && rows.length > 1 ? rows.slice(1) : rows;
       tableData.rows = dataRows.map(tr => {
-         const cells = Array.from(tr.querySelectorAll('td, th'));
-         return cells.map(cell => processDOMNode(cell) as SimplifiedNode);
+         const rows = Array.from(tr.querySelectorAll('td, th'));
+         return rows.map(cell => processDOMNode(cell) as SimplifiedNode);
       })[0];
+
       return tableData;
    }
 
-   function processDOMNode(node: Node): SimplifiedNode | SimplifiedNode[] | null {
-      if (node.nodeType === Node.TEXT_NODE) {
-         const textContent = trimAndNormalize(node.textContent || '');
-         if (!textContent) return null;
-         return { tag: 'span', text: textContent };
-      }
+   function extractMetaData(): MetaData {
+      const metaData: MetaData = {};
 
-      if (node.nodeType !== Node.ELEMENT_NODE) return null;
+      const ogTitleElm = document.querySelector('meta[property="og:title"]') as HTMLMetaElement;
+      const ogTitle = trimAndNormalize(ogTitleElm?.content || '');
+      const documentTitle = trimAndNormalize(document.title);
+      if (ogTitle || documentTitle) metaData.title = ogTitle || documentTitle;
 
-      const element = node as Element;
-      const tagName = element.tagName.toLowerCase();
-      if (tagName === 'script' || tagName === 'style') return null;
-      if (!isElementVisible(element)) return null;
+      const ogDescriptionElm = document.querySelector('meta[property="og:description"]') as any;
+      const ogDescription = trimAndNormalize(ogDescriptionElm?.content || '');
+      const descriptionElm = document.querySelector('meta[name="description"]') as HTMLMetaElement;
+      const description = trimAndNormalize(descriptionElm?.content || '');
+      if (ogDescription || description) metaData.description = ogDescription || description;
 
-      if (
-         INTERACTIVE_TAGS.has(tagName.toUpperCase()) ||
-         (tagName === 'a' &&
-            element.hasAttribute('role') &&
-            element.getAttribute('role')?.toLowerCase() === 'button')
-      ) {
-         return null;
-      }
+      const authorElm = document.querySelector('meta[name="author"]') as HTMLMetaElement | null;
+      const author = trimAndNormalize(authorElm?.content || '');
+      if (author) metaData.author = author;
 
-      if (!PRESERVED_TAGS.has(tagName.toUpperCase())) {
-         const childNodes = traverseChildNodes(node);
-         return childNodes.length ? childNodes : null;
-      }
+      const canonicalElm = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+      const canonical = canonicalElm?.href.trim() || '';
+      if (canonical) metaData.canonical = canonical;
 
-      const elementObject: SimplifiedNode = { tag: tagName };
+      const ogImageElm = document.querySelector('meta[property="og:image"]') as HTMLMetaElement;
+      const ogImage = trimAndNormalize(ogImageElm?.content || '');
+      if (ogImage) metaData.ogImage = ogImage;
 
-      if (tagName === 'img') {
-         const src = element.getAttribute('src');
-         if (src) elementObject.src = new URL(src, document.baseURI).href;
-         const alt = element.getAttribute('alt');
-         if (alt) elementObject.alt = trimAndNormalize(alt);
-      }
-
-      if (tagName === 'a') {
-         const href = element.getAttribute('href');
-         if (href) elementObject.href = new URL(href, document.baseURI).href;
-      }
-
-      if (tagName === 'video') {
-         const poster = element.getAttribute('poster');
-         if (poster) elementObject.poster = new URL(poster, document.baseURI).href;
-      }
-
-      if (tagName === 'table') {
-         return extractTableData(element);
-      }
-
-      const children = traverseChildNodes(node);
-      if (children.length) {
-         elementObject.children = children;
-      }
-      return elementObject;
+      return metaData;
    }
 
    return {
