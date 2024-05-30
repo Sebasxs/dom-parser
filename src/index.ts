@@ -3,7 +3,7 @@ import { writeFileSync } from 'node:fs';
 import { extractDOMData } from './parser.ts';
 import { randomBytes } from 'node:crypto';
 
-const URL = 'https://es.wikipedia.org/wiki/Rosemary%27s_Baby_(pel%C3%ADcula)';
+const URL = 'https://www.instagram.com/p/DEvW6P2IMDV/';
 
 extractDOMData(URL)
    .then(result => {

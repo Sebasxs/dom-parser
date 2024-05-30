@@ -110,7 +110,6 @@ function extractPageData(): DOMData {
          }
 
          interactiveElements.push(interactiveObject);
-         return null;
       }
 
       if (!PRESERVED_TAGS.has(tagName)) {
