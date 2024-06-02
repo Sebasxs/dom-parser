@@ -5,13 +5,13 @@
 
 <br>
 
-![](https://i.imgur.com/waxVImv.png)
+![](https://i.imgur.com/kStMysx.png)
 
 This Node.js library uses Playwright (Chromium) to intelligently parse website DOMs, delivering clean, structured data optimized for automation tasks and efficient LLM context. Go beyond basic scraping – focus on semantic content and interactive elements.
 
-![](https://i.imgur.com/waxVImv.png)
+![](https://i.imgur.com/kStMysx.png)
 
-## Key Benefits for Developers & LLMs
+## Key Benefits
 
 -  **Semantic & Interactive Extraction:** Parses beyond raw HTML, prioritizing headings, text, lists, tables, forms, and media. Captures interactive elements and their attributes.
 -  **LLM Context Optimization:** Returns a simplified, flattened JSON output, minimizing token count for cost-effective LLM usage.
