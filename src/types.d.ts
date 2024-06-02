@@ -24,7 +24,7 @@ export interface SimplifiedNode {
    alt?: string;
    poster?: string;
    header?: SimplifiedNode[];
-   rows?: SimplifiedNode[];
+   rows?: SimplifiedNode[][];
 }
 
 export interface MetaData {
@@ -36,7 +36,7 @@ export interface MetaData {
 }
 
 export interface DOMData {
-   metadata: MetaData;
+   meta: MetaData;
    body: SimplifiedNode[];
    interactive: InteractiveElement[];
 }

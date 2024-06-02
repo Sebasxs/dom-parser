@@ -1,0 +1,725 @@
+{
+  "meta": {
+    "title": "Les Âmes du Kolizéum (événement)",
+    "description": "Guide complet de l'événement Les Âmes du Kolizéum de Dofus dans lequel vous pourrez récupérer des Kolizétons contrefaits en affrontant des Boss du jeu.",
+    "ogImage": "https://www.dofuspourlesnoobs.com/uploads/1/3/0/1/13010384/custom_themes/586567114324766674/files/card/event-kolizeum.png"
+  },
+  "body": [
+    {
+      "tag": "table",
+      "header": [],
+      "rows": [
+        [
+          {
+            "tag": "a",
+            "href": "https://www.dofuspourlesnoobs.com/",
+            "src": "https://www.dofuspourlesnoobs.com/uploads/1/3/0/1/13010384/1426805183.png",
+            "alt": "Dofus pour les Noobs"
+          },
+          {
+            "tag": "ul",
+            "children": [
+              {
+                "tag": "li",
+                "text": "[Accueil](https://www.dofuspourlesnoobs.com/)"
+              },
+              {
+                "tag": "li",
+                "text": "[Donjons](https://www.dofuspourlesnoobs.com/donjons.html)"
+              },
+              {
+                "tag": "li",
+                "text": "[Quêtes](https://www.dofuspourlesnoobs.com/quecirctes.html)"
+              },
+              {
+                "tag": "li",
+                "text": "[Tutoriels](https://www.dofuspourlesnoobs.com/tutoriels.html)"
+              },
+              {
+                "tag": "li",
+                "text": "[Outils](https://www.dofuspourlesnoobs.com/outils.html)"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "tag": "a",
+      "href": "https://www.dofuspourlesnoobs.com/les-ames-du-kolizeum.html",
+      "src": "https://www.dofuspourlesnoobs.com/uploads/1/3/0/1/13010384/custom_themes/586567114324766674/files/Promo/promo-kolizeum.jpg",
+      "alt": "guide dofus"
+    },
+    {
+      "tag": "a",
+      "href": "https://www.dofuspourlesnoobs.com/sain-ballotin.html",
+      "src": "https://www.dofuspourlesnoobs.com/uploads/1/3/0/1/13010384/custom_themes/586567114324766674/files/Promo/promo-sain-ballotin25.jpg",
+      "alt": "guide dofus"
+    },
+    {
+      "tag": "a",
+      "href": "https://www.dofuspourlesnoobs.com/guide-de-progression-dofus3-p1.html",
+      "src": "https://www.dofuspourlesnoobs.com/uploads/1/3/0/1/13010384/custom_themes/586567114324766674/files/Promo/guide-progression-dofus3.jpg",
+      "alt": "guide dofus"
+    },
+    {
+      "tag": "a",
+      "href": "https://www.dofuspourlesnoobs.com/resolution-de-chasse-aux-tresors.html",
+      "src": "https://www.dofuspourlesnoobs.com/uploads/1/3/0/1/13010384/custom_themes/586567114324766674/files/Promo/promo267-resolution-chasse.jpg",
+      "alt": "guide dofus"
+    },
+    {
+      "tag": "table",
+      "header": [],
+      "rows": [
+        [
+          {
+            "tag": "img",
+            "src": "https://ads.sportslocalmedia.com/akcelo_icon.svg",
+            "alt": "Akcelo icon"
+          },
+          {
+            "tag": "a",
+            "href": "https://akcelo.io/",
+            "children": [
+              {
+                "tag": "span",
+                "text": "Powered by"
+              },
+              {
+                "tag": "img",
+                "src": "https://ads.sportslocalmedia.com/akcelo_logo.svg",
+                "alt": "Akcelo logo"
+              }
+            ]
+          },
+          {
+            "tag": "h2",
+            "text": "Les Âmes du Kolizéum (événement)"
+          },
+          {
+            "tag": "table",
+            "header": [],
+            "rows": [
+              [
+                {
+                  "tag": "img",
+                  "src": "https://www.dofuspourlesnoobs.com/uploads/1/3/0/1/13010384/tuto2m-event-kolizeum-sommaire_orig.jpg",
+                  "alt": "Les Âmes du Kolizéum dofus"
+                },
+                {
+                  "tag": "ul",
+                  "children": [
+                    {
+                      "tag": "li",
+                      "text": "[I- Qu'est-ce que l’événement « Les Âmes du Kolizéum » ?](https://www.dofuspourlesnoobs.com/les-ames-du-kolizeum.html#ames-kolizeum)"
+                    },
+                    {
+                      "tag": "li",
+                      "text": "[II- Fonctionnement de l’événement.](https://www.dofuspourlesnoobs.com/les-ames-du-kolizeum.html#fonctionnement)"
+                    },
+                    {
+                      "tag": "li",
+                      "text": "[III- Les récompenses.](https://www.dofuspourlesnoobs.com/les-ames-du-kolizeum.html#recompenses)"
+                    }
+                  ]
+                },
+                {
+                  "tag": "span",
+                  "text": "Mis en ligne le 04/02/2025.\n\nDernière mise à jour le -"
+                }
+              ]
+            ]
+          },
+          {
+            "tag": "span",
+            "text": "NOTE : L'événement « Les Âmes du Kolizéum » sera activé du Mardi 4 Février (fin de maintenance) au Lundi 03 Mars (15h) 2025."
+          },
+          {
+            "tag": "h3",
+            "text": "I- Qu'est-ce que l’événement « Les Âmes du Kolizéum » ?"
+          },
+          {
+            "tag": "span",
+            "text": "Les Âmes du Kolizéum est unévénement temporaire d’un mois, actif du Mardi 4 Février 2025 (fin de maintenance) au Lundi 03 Mars (15h) 2025. Bien que cet événement soit temporaire, Ankama n’exclut pas de le réactiver de temps en temps."
+          },
+          {
+            "tag": "table",
+            "header": [],
+            "rows": [
+              [
+                {
+                  "tag": "img",
+                  "src": "https://www.dofuspourlesnoobs.com/uploads/1/3/0/1/13010384/tuto2m-4galets_orig.png",
+                  "alt": "évent Les Âmes du Kolizéum"
+                },
+                {
+                  "tag": "span",
+                  "text": "Cet événement est une réponse au manque de galets en jeu avec l’arrivée des nouveaux serveurs de la version 3.0 et surtout sur leur nécessité dans beaucoup de recettes qui bride la progression des joueurs PvM.\n\nActuellement les galets ne peuvent s’obtenir qu’en Kolizeum donc en PvP. Cet événement va permettre d’ajouter une alternative permettant d’obtenir des galets en PvM mais en quantité limitée."
+                }
+              ]
+            ]
+          },
+          {
+            "tag": "h3",
+            "text": "II- Fonctionnement de l’événement"
+          },
+          {
+            "tag": "table",
+            "header": [],
+            "rows": [
+              [
+                {
+                  "tag": "img",
+                  "src": "https://www.dofuspourlesnoobs.com/uploads/1/3/0/1/13010384/tuto2m-6pelti_orig.png",
+                  "alt": "Les Âmes du Kolizéum"
+                },
+                {
+                  "tag": "span",
+                  "text": "L’événement s’effectue au travers d’une quête répétable à l’infini pour tous les personnages de niveau 20 ou plus : [Gladiateur dans l'âme.](https://www.dofuspourlesnoobs.com/gladiateur-dans-l-ame.html) Cette quête se lance auprès de Peltifera dans le Kolizéum en [-13,-29] (seconde salle tout droit)."
+                }
+              ]
+            ]
+          },
+          {
+            "tag": "span",
+            "text": "Déroulement de la quête :"
+          },
+          {
+            "tag": "ol",
+            "children": [
+              {
+                "tag": "li",
+                "text": "Une fois que vous avez parlé à Peltifera pour prendre la quête, il faudra choisir un boss à affronter."
+              },
+              {
+                "tag": "li",
+                "text": "Il faudra craft une pierre d’âme spéciale du Boss choisi (recettes différentes) à un atelier spécial qui se trouve sur la même map que Peltifera."
+              },
+              {
+                "tag": "li",
+                "text": "Il faudra alors consommer la pierre pour obtenir une altération."
+              },
+              {
+                "tag": "li",
+                "text": "Il ne reste plus qu’à vaincre le Boss en question pour obtenir une pierre."
+              },
+              {
+                "tag": "li",
+                "text": "Puis ramener la pierre à Peltifera en [-13,-29]."
+              }
+            ]
+          },
+          {
+            "tag": "span",
+            "text": "Pour plus d'informations, consultez notre page sur la quête : ​ [Gladiateur dans l'âme.](https://www.dofuspourlesnoobs.com/gladiateur-dans-l-ame.html) Informations et restrictions sur la quête :"
+          },
+          {
+            "tag": "ul",
+            "children": [
+              {
+                "tag": "li",
+                "text": "Les pierres d’âmes à craft n’ont rien à voir avec les pierres d’âmes du jeu, ce sont des objets de quête consommables qui donnent une altération (non échangeable). Les recettes sont expliquées plus bas."
+              },
+              {
+                "tag": "li",
+                "text": "Il n’y a donc pas besoin du sort de capture d’âme il suffit d’avoir l’altération."
+              },
+              {
+                "tag": "li",
+                "text": "Vous ne pouvez faire qu’une fois chaque pierre de Boss donc durant tout l’event vous ne pourrez faire qu’un seul Boss de chaque (impossible de farm le même boss)."
+              }
+            ]
+          },
+          {
+            "tag": "span",
+            "text": "Pour fabriquer une pierre d'âme spéciale d'un boss, il va falloir passer par deux étapes :Étape 1 : Craft d'une pierre d'âme spéciale « vide ».\n\nLa recette de cette pierre d'âme est différente en fonction du niveau du Boss que vous souhaitez affronter :"
+          },
+          {
+            "tag": "ul",
+            "children": [
+              {
+                "tag": "li",
+                "text": "Niveau 20 à 40 : Petite pierre d'âme spéciale : 1 x Nacre + 2 x Artefact Pandawushu Bois."
+              },
+              {
+                "tag": "li",
+                "text": "Niveau 50 à 90 : Moyenne pierre d'âme spéciale : 1 x Émeraude + 2 x Artefact Pandawushu Eau."
+              },
+              {
+                "tag": "li",
+                "text": "Niveau 100 à 140 : Grande pierre d'âme spéciale : 1 x Topaze + 2 x Artefact Pandawushu Roc."
+              },
+              {
+                "tag": "li",
+                "text": "Niveau 150 à 190 : Énorme pierre d'âme spéciale : 1 x Aigue-Marine + 2 x Artefact Pandawushu Vent."
+              },
+              {
+                "tag": "li",
+                "text": "Niveau 200 : Gigantesque pierre d'âme spéciale : 1 x Rubis + 1 x Saphir + 2 x Artefact Pandawushu Feu."
+              }
+            ]
+          },
+          {
+            "tag": "span",
+            "text": "Étape 2 : Craft d'une pierre d'âme spéciale de Boss.\n\nLa pierre d'âme spéciale de Boss se fabrique à partir d'une pierre d'âme spéciale crafté précédemment dans l'étape 1 et d'une clef du donjon du Boss que vous souhaitez affronter.\n\nExemple :"
+          },
+          {
+            "tag": "table",
+            "header": [],
+            "rows": [
+              [
+                {
+                  "tag": "img",
+                  "src": "https://www.dofuspourlesnoobs.com/uploads/1/3/0/1/13010384/ark101koli11_orig.png",
+                  "alt": "Les Âmes du Kolizéum"
+                },
+                {
+                  "tag": "span",
+                  "text": "Si je veux faire le donjon Boostache, je dois, dans un premier temps, craft la petite pierre d'âme spéciale qui correspond à la tranche de niveau du Boostache.\n\nPuis je dois craft la pierre d'âme spéciale de Boostache à partir de la pierre d'âme craft précédemment et en y ajoutant la clef du donjon."
+                }
+              ]
+            ]
+          },
+          {
+            "tag": "span",
+            "text": "Ci-dessous la liste totale des recettes des deux pierres d'âmes en fonction du niveau du Boss que vous souhaitez affronter."
+          },
+          {
+            "tag": "table",
+            "header": [
+              {
+                "tag": "span",
+                "text": "Niveau du Boss"
+              },
+              {
+                "tag": "span",
+                "text": "Recette de la pierre d’âme"
+              }
+            ],
+            "rows": [
+              [
+                {
+                  "tag": "span",
+                  "text": "20 à 40"
+                },
+                {
+                  "tag": "ul",
+                  "children": [
+                    {
+                      "tag": "li",
+                      "text": "1 x Nacre."
+                    },
+                    {
+                      "tag": "li",
+                      "text": "2 x Artefact Pandawushu Bois."
+                    },
+                    {
+                      "tag": "li",
+                      "text": "1 x Clé du donjon choisi."
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "tag": "span",
+                  "text": "50 à 90"
+                },
+                {
+                  "tag": "ul",
+                  "children": [
+                    {
+                      "tag": "li",
+                      "text": "1 x Émeraude."
+                    },
+                    {
+                      "tag": "li",
+                      "text": "2 x Artefact Pandawushu Eau."
+                    },
+                    {
+                      "tag": "li",
+                      "text": "1 x Clé du donjon choisi."
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "tag": "span",
+                  "text": "100 à 140"
+                },
+                {
+                  "tag": "ul",
+                  "children": [
+                    {
+                      "tag": "li",
+                      "text": "1 x Topaze."
+                    },
+                    {
+                      "tag": "li",
+                      "text": "2 x Artefact Pandawushu Roc."
+                    },
+                    {
+                      "tag": "li",
+                      "text": "1 x Clé du donjon choisi."
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "tag": "span",
+                  "text": "150 à 190"
+                },
+                {
+                  "tag": "ul",
+                  "children": [
+                    {
+                      "tag": "li",
+                      "text": "1 x Aigue-Marine."
+                    },
+                    {
+                      "tag": "li",
+                      "text": "2 x Artefact Pandawushu Vent."
+                    },
+                    {
+                      "tag": "li",
+                      "text": "1 x Clé du donjon choisi."
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "tag": "span",
+                  "text": "200"
+                },
+                {
+                  "tag": "ul",
+                  "children": [
+                    {
+                      "tag": "li",
+                      "text": "1 x Saphir."
+                    },
+                    {
+                      "tag": "li",
+                      "text": "1 x Rubis."
+                    },
+                    {
+                      "tag": "li",
+                      "text": "2 x Artefact Pandawushu Feu."
+                    },
+                    {
+                      "tag": "li",
+                      "text": "1 x Clé du donjon choisi."
+                    }
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "tag": "span",
+            "text": "NOTE : Le donjon Incarnam et la Fuji Givrefoux sont exclus des Boss pouvant être choisis pour la quête."
+          },
+          {
+            "tag": "h3",
+            "text": "III- Les récompenses"
+          },
+          {
+            "tag": "span",
+            "text": "À la fin de chaque quête réalisée, Peltifera vous donnera un nombre de Kolizéton contrefait (différents des vrais Kolizétons) en fonction du niveau du Boss que vous avez vaincu."
+          },
+          {
+            "tag": "table",
+            "header": [
+              {
+                "tag": "span",
+                "text": "Niveau du Boss"
+              },
+              {
+                "tag": "span",
+                "text": "Gains de Kolizétons contrefaits"
+              },
+              {
+                "tag": "span",
+                "text": "Nombre de donjons"
+              }
+            ],
+            "rows": [
+              [
+                {
+                  "tag": "span",
+                  "text": "20 à 40"
+                },
+                {
+                  "tag": "span",
+                  "text": "1"
+                },
+                {
+                  "tag": "span",
+                  "text": "9"
+                }
+              ],
+              [
+                {
+                  "tag": "span",
+                  "text": "50 à 90"
+                },
+                {
+                  "tag": "span",
+                  "text": "2"
+                },
+                {
+                  "tag": "span",
+                  "text": "20"
+                }
+              ],
+              [
+                {
+                  "tag": "span",
+                  "text": "100 à 140"
+                },
+                {
+                  "tag": "span",
+                  "text": "4"
+                },
+                {
+                  "tag": "span",
+                  "text": "30"
+                }
+              ],
+              [
+                {
+                  "tag": "span",
+                  "text": "150 à 190"
+                },
+                {
+                  "tag": "span",
+                  "text": "8"
+                },
+                {
+                  "tag": "span",
+                  "text": "24"
+                }
+              ],
+              [
+                {
+                  "tag": "span",
+                  "text": "200"
+                },
+                {
+                  "tag": "span",
+                  "text": "12"
+                },
+                {
+                  "tag": "span",
+                  "text": "30"
+                }
+              ]
+            ]
+          },
+          {
+            "tag": "span",
+            "text": "Ces Kolizétons contrefaits pourront être utilisés pour acheter des galets auprès de Peltifera :"
+          },
+          {
+            "tag": "ul",
+            "children": [
+              {
+                "tag": "li",
+                "text": "1 x Galet cramoisi contre 3 x Kolizéton contrefait."
+              },
+              {
+                "tag": "li",
+                "text": "1 x Galet rutilant contre 6 x Kolizéton contrefait."
+              },
+              {
+                "tag": "li",
+                "text": "1 x Galet rayonnant contre 12 x Kolizéton contrefait."
+              },
+              {
+                "tag": "li",
+                "text": "1 x Galet brasillant contre 24 x Kolizéton contrefait."
+              }
+            ]
+          },
+          {
+            "tag": "img",
+            "src": "https://www.dofuspourlesnoobs.com/uploads/1/3/0/1/13010384/ark101koli1_orig.jpg",
+            "alt": "Les Âmes du Kolizéum"
+          },
+          {
+            "tag": "span",
+            "text": "En effectuant tous les donjons du jeu, il est possible d’obtenir jusqu’à 30 Galets brasillants.\n\nNOTE : Il ne sera possible d’acheter que des galets avec les Kolizétons contrefaits, vous n’aurez pas accès à la boutique officielle du Kolizéum.\n\nAttention les galets ont une condition de niveau afin de pouvoir être acheté :"
+          },
+          {
+            "tag": "ul",
+            "children": [
+              {
+                "tag": "li",
+                "text": "Galet cramoisi : Niveau 20 minimum."
+              },
+              {
+                "tag": "li",
+                "text": "Galet rutilant : Niveau 50 minimum."
+              },
+              {
+                "tag": "li",
+                "text": "Galet rayonnant : Niveau 100 minimum."
+              },
+              {
+                "tag": "li",
+                "text": "Galet brasillant : Niveau 150 minimum."
+              }
+            ]
+          },
+          {
+            "tag": "a",
+            "href": "https://ko-fi.com/Y8Y3D7QM6",
+            "children": [
+              {
+                "tag": "img",
+                "src": "https://www.dofuspourlesnoobs.com/uploads/1/3/0/1/13010384/custom_themes/586567114324766674/files/contributors/cupborder.png",
+                "alt": "Ko-fi donations"
+              },
+              {
+                "tag": "span",
+                "text": "Supportez DPLN"
+              }
+            ]
+          },
+          {
+            "tag": "span",
+            "text": "Contenu recommandé"
+          },
+          {
+            "tag": "h5",
+            "text": "Commenter"
+          },
+          {
+            "tag": "span",
+            "text": "Erreur de chargement des commentaires Une extension de votre navigateur semble bloquer la fenêtre de consentement aux cookies du site. Sans choix effectué sur votre consentement aux cookies, certains éléments du site tel que les commentaires risquent de ne plus fonctionner.\n\n[Accueil](https://www.dofuspourlesnoobs.com/)"
+          },
+          {
+            "tag": "img",
+            "src": "https://ads.sportslocalmedia.com/akcelo_icon.svg",
+            "alt": "Akcelo icon"
+          },
+          {
+            "tag": "a",
+            "href": "https://akcelo.io/",
+            "children": [
+              {
+                "tag": "span",
+                "text": "Powered by"
+              },
+              {
+                "tag": "img",
+                "src": "https://ads.sportslocalmedia.com/akcelo_logo.svg",
+                "alt": "Akcelo logo"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "tag": "table",
+      "header": [],
+      "rows": [
+        [
+          {
+            "tag": "a",
+            "href": "https://ko-fi.com/Y8Y3D7QM6",
+            "children": [
+              {
+                "tag": "img",
+                "src": "https://storage.ko-fi.com/cdn/cup-border.png",
+                "alt": "Ko-fi donations"
+              },
+              {
+                "tag": "span",
+                "text": "Supportez DPLN"
+              }
+            ]
+          },
+          {
+            "tag": "a",
+            "text": "[Signaler un problème.](https://www.dofuspourlesnoobs.com/signaler-un-bug.html)"
+          }
+        ]
+      ]
+    },
+    {
+      "tag": "span",
+      "text": "Top contributeurs (sur les 90 derniers jours)"
+    },
+    {
+      "tag": "img",
+      "src": "https://ko-fi.com/img/anon6.png?v=1"
+    },
+    {
+      "tag": "span",
+      "text": "S4nji"
+    },
+    {
+      "tag": "img",
+      "src": "https://ko-fi.com/img/anon2.png?v=1"
+    },
+    {
+      "tag": "span",
+      "text": "Nrogared"
+    },
+    {
+      "tag": "img",
+      "src": "https://ko-fi.com/img/anon5.png?v=1"
+    },
+    {
+      "tag": "span",
+      "text": "robinfourton Classement mis à jour manuellement environ toutes les 24 heures, [voir le classement complet.](https://ko-fi.com/dofuspourlesnoobs/leaderboard) Un grand merci à [tous les contributeurs](https://www.dofuspourlesnoobs.com/contributeurs.html)❤️"
+    },
+    {
+      "tag": "a",
+      "href": "https://fr-fr.facebook.com/DofuspourlesNoobs"
+    },
+    {
+      "tag": "a",
+      "href": "https://twitter.com/DPLNofficiel"
+    },
+    {
+      "tag": "a",
+      "href": "mailto:dofuspourlesnoobs@gmail.com"
+    },
+    {
+      "tag": "a",
+      "href": "https://discord.gg/9sgDPP8f7X"
+    },
+    {
+      "tag": "span",
+      "text": "Dofus est un MMORPG édité par [Ankama](https://www.ankama.com/fr). \"dofuspourlesnoobs\" est un site non-officiel sans aucun lien avec Ankama.\n\nCertaines illustrations sont la propriété d'Ankama Studio et de Dofus - Tous droits réservés Copyright © 2013 - 2025 Dofus pour les Noobs - Merci de ne pas copier le contenu de ce site sans autorisation.\n\n[Mentions légales](https://www.dofuspourlesnoobs.com/mentions-legales.html)/ [CGU](https://www.dofuspourlesnoobs.com/cgu-dpln.html)/ [Informations sur les cookies](https://www.dofuspourlesnoobs.com/informations-sur-les-cookies.html)/ [Confidentialité](https://www.dofuspourlesnoobs.com/les-ames-du-kolizeum.html#)/ [Nous contacter](https://www.dofuspourlesnoobs.com/contact.html)"
+    },
+    {
+      "tag": "a",
+      "href": "https://www.dofuspourlesnoobs.com/les-ames-du-kolizeum.html#",
+      "src": "https://www.dofuspourlesnoobs.com/files/theme/arrowup2.png",
+      "alt": "remonter"
+    }
+  ],
+  "interactive": [
+    {
+      "tag": "input",
+      "name": "q",
+      "class": "wsite-search-input",
+      "placeholder": "Rechercher..."
+    },
+    {
+      "tag": "input",
+      "name": "q",
+      "class": "wsite-input wsite-search-element-input",
+      "aria-label": "Chercher un donjon, une quête",
+      "placeholder": "Chercher un donjon, une quête"
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { writeFileSync } from 'node:fs';
 import { extractDOMData } from './parser.ts';
 import { randomBytes } from 'node:crypto';
 
-const URL = 'https://www.instagram.com/p/DEvW6P2IMDV/';
+const URL = 'https://www.dofuspourlesnoobs.com/les-ames-du-kolizeum.html';
 
 extractDOMData(URL)
    .then(result => {
